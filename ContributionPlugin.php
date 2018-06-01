@@ -783,6 +783,7 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $view = get_view();
         $element = $args['element'];
+        $elementName = $element->name;
         $type = $view->type;
         $contributionElement = $this->_db->getTable('ContributionTypeElement')->findByElementAndType($element, $type);
         if ($contributionElement->long_text == 0) {
