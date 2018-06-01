@@ -807,6 +807,7 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         $prompt = $contributionElement->prompt;
         $components['label'] = '<label>' . $prompt . '</label>';
         $components['add_input'] = null;
+        $components['description'] = null;
         return $components;
     }
 }
