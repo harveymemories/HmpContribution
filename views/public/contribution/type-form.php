@@ -106,6 +106,9 @@ fire_plugin_hook('contribution_type_form', array('type'=>$type, 'view'=>$this));
 ?>
 <?php endif; ?>
 
+
+<?php
 // Enable Datepicker calendar in date fields
-<?php echo js_tag('datepicker'); ?>
+echo js_tag('datepicker');
+?>
 
