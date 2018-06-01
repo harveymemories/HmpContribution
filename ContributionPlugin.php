@@ -788,6 +788,9 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         if ($contributionElement->long_text == 0) {
             $components['input'] = $view->formText($args['input_name_stem'] . '[text]', $args['value']);
         }
+        if ($elementName == 'Date') {
+            $components['input'] = $view->formText($args['input_name_stem'] . '[text]', $args['value'], array('class' => 'datepicker'));
+        }
         $components['form_controls'] = null;
         $components['html_checkbox'] = null;
         return $components;

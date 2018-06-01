@@ -6,6 +6,9 @@
  * @package Contribution
  */
 
+queue_js_url('https://code.jquery.com/ui/1.12.1/jquery-ui.js');
+queue_css_url('//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+
 queue_js_file('contribution-public-form');
 $contributionPath = get_option('contribution_page_path');
 if(!$contributionPath) {
