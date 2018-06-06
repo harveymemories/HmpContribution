@@ -1,44 +1,4 @@
 
-<?php if (!$type): ?>
-<p><?php echo __('You must choose a contribution type to continue.'); ?></p>
-<?php else: ?>
-<h2><?php echo __('Contribute a %s', $type->display_name); ?></h2>
-
-<?php
-if ($type->isFileRequired()):
-    $required = true;
-?>
-
-<div class="field">
-    <div class="two columns alpha">
-        <?php echo $this->formLabel('contributed_file', __('Upload a file')); ?>
-    </div>
-    <div class="inputs five columns omega">
-        <?php echo $this->formFile('contributed_file', array('class' => 'fileinput')); ?>
-    </div>
-</div>
-
-<?php endif; ?>
-
-<?php
-foreach ($type->getTypeElements() as $contributionTypeElement) {
-    echo $this->elementForm($contributionTypeElement->Element, $item, array('contributionTypeElement'=>$contributionTypeElement));
-}
-?>
-
-<?php
-if (!isset($required) && $type->isFileAllowed()):
-?>
-<div class="field">
-        <div class="two columns alpha">
-            <?php echo $this->formLabel('contributed_file', __('Upload a file (Optional)')); ?>
-        </div>
-        <div class="inputs five columns omega">
-            <?php echo $this->formFile('contributed_file', array('class' => 'fileinput')); ?>
-        </div>
-</div>
-<?php endif; ?>
-
 <?php $user = current_user(); ?>
 <?php if(( get_option('contribution_open') || get_option('contribution_strict_anonymous') ) && !$user) : ?>
 <div class="field">
@@ -98,6 +58,47 @@ if (!isset($required) && $type->isFileAllowed()):
         </fieldset>
         </div>
         <?php endif; ?>
+
+<?php if (!$type): ?>
+<p><?php echo __('You must choose a contribution type to continue.'); ?></p>
+<?php else: ?>
+<h2><?php echo __('Contribute a %s', $type->display_name); ?></h2>
+
+<?php
+if ($type->isFileRequired()):
+    $required = true;
+?>
+
+<div class="field">
+    <div class="two columns alpha">
+        <?php echo $this->formLabel('contributed_file', __('Upload a file')); ?>
+    </div>
+    <div class="inputs five columns omega">
+        <?php echo $this->formFile('contributed_file', array('class' => 'fileinput')); ?>
+    </div>
+</div>
+
+<?php endif; ?>
+
+<?php
+foreach ($type->getTypeElements() as $contributionTypeElement) {
+    echo $this->elementForm($contributionTypeElement->Element, $item, array('contributionTypeElement'=>$contributionTypeElement));
+}
+?>
+
+<?php
+if (!isset($required) && $type->isFileAllowed()):
+?>
+<div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel('contributed_file', __('Upload a file (Optional)')); ?>
+        </div>
+        <div class="inputs five columns omega">
+            <?php echo $this->formFile('contributed_file', array('class' => 'fileinput')); ?>
+        </div>
+</div>
+<?php endif; ?>
+
 
 <?php
 // Allow other plugins to append to the form (pass the type to allow decisions
