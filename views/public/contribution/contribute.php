@@ -38,7 +38,7 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
     
     <h1><?php echo $head['title']; ?></h1>
 
-<p>On this page you can share your own <strong>stories</strong>, <strong>images</strong>, and <strong>audio-visual recordings</strong> from or about Hurricane Harvey. If you have a different kind of item or memory you would like to contribute, or you would like assistance telling your story, please <a href="/contact">contact us</a>.</p> 
+<p>On this page you can share your own <strong>stories</strong>, <strong>images</strong>, and <strong>audio-visual recordings</strong> from or about Hurricane Harvey. If you have a different kind of item or memory you would like to contribute, or if you would like assistance telling your story, please <a href="/contact">contact us</a>.</p> 
 
     <?php if(! ($user = current_user() )
               && !(get_option('contribution_open') )
