@@ -346,8 +346,10 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
     {
         $linkage = new ContributionContributedItem;
         $linkage->item_id = $item->id;
-        $linkage->public = $post['contribution-public'];
-        $linkage->anonymous = $post['contribution-anonymous'];
+        //$linkage->public = $post['contribution-public'];
+        //$linkage->anonymous = $post['contribution-anonymous'];
+        $linkage->public = 1;
+        $linkage->anonymous = 0;
         $linkage->save();
     }
 

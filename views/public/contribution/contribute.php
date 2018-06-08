@@ -65,16 +65,12 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
                 <?php if(isset($captchaScript)): ?>
                     <div id="captcha" class="inputs"><?php echo $captchaScript; ?></div>
                 <?php endif; ?>
+<h2>Terms and Conditions</h2>
                 <div class="inputs">
-                    <?php $public = isset($_POST['contribution-public']) ? $_POST['contribution-public'] : 0; ?>
-                    <?php echo $this->formCheckbox('contribution-public', $public, null, array('1', '0')); ?>
-                    <?php echo $this->formLabel('contribution-public', __('Publish my contribution on the web.')); ?>
-                </div>
-                <div class="inputs">
-                <p class="explanation">By submitting an item, you agree that it may be published on the Harvey Memories Project. You may also choose to attach an optional Creative Commons license to your item so that others can use and distribute it more easily. Check all the boxes that apply. For more information, see the Terms and Conditions.</p>
+                <p class="explanation">By submitting an item, you agree that it may be published on the Harvey Memories Project. You may also choose to attach an optional Creative Commons license to your item so that others can use and distribute it more easily. Check all the boxes that apply. For more information, see the full <?php echo __("<a href='" . contribution_contribute_url('terms') . "' target='_blank'>" . __('Terms and Conditions') . ".</a>"); ?></p>
                     <?php $rightsBy = isset($_POST['contribution-rights-by']) ? $_POST['contribution-rights-by'] : 0; ?>
                     <?php echo $this->formCheckbox('contribution-rights[]', 'BY', null, array('BY', '')); ?>
-                    <?php echo $this->formLabel('contribution-rights', __('Others can use and restribute my item, with a citation and appropriate credit, in any medium or format ... ')); ?><br/>
+                    <?php echo $this->formLabel('contribution-rights', __('Others can use and redistribute my item, with a citation and appropriate credit, in any medium or format ... ')); ?><br/>
                     <?php $rightsNc = isset($_POST['contribution-rights-nc']) ? $_POST['contribution-rights-nc'] : 0; ?>
                     <?php echo $this->formCheckbox('contribution-rights[]', $rightsNc, null, array('NC', '')); ?>
                     <?php echo $this->formLabel('contribution-rights', __('only if the item is used for non-commercial purposes.')); ?><br/>
