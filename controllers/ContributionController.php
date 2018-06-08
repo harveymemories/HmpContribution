@@ -278,6 +278,7 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
                 return false;
             }
             $this->_addElementTextsToItem($item, $post['Elements']);
+            $this->_addRightsStatementToItem($item, $post['contribution-rights']);
             // Allow plugins to deal with the inputs they may have added to the form.
             fire_plugin_hook('contribution_save_form', array('contributionType'=>$contributionType,'record'=>$item, 'post'=>$post));
             $item->save();
@@ -375,6 +376,33 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
                 }
             }
         }
+    }
+
+    protected function _addRightsStatementToItem($item, $rights)
+    {
+        $db = get_db();
+        $elementTable = $db->getTable('Element');
+        $rightsElement = $elementTable->findByElementSetNameAndElementName('Dublin Core', 'Rights');
+        if (!empty($rights) && in_array("BY", $rights)) {
+          if (in_array("SA", $rights) && in_array("ND", $rights)) {
+              $rights = array_diff($rights, array("SA"));
+          }
+          $licenseTerms = array_intersect_key(array(
+              "BY" => "Attribution",
+              "NC" => "NonCommercial",
+              "SA" => "ShareAlike",
+              "ND" => "NoDerivatives",
+          ), array_flip($rights));
+          $rightsStatement = "This item is licensed under a Creative Commons ";
+          $rightsStatement .= __('<a href="https://creativecommons.org/licenses/%s/4.0/">',
+              strtolower(implode('-', $rights)));
+          $rightsStatement .= __('%s 4.0 International (CC %s 4.0)</a> license.',
+              implode('-', $licenseTerms),
+              implode('-', $rights));
+        } else {
+           $rightsStatement = "The creator of this item retains all rights.";
+        }
+        $item->addTextForElement($rightsElement, $rightsStatement, $isHtml = true);
     }
 
     /**

@@ -71,6 +71,21 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
                     <?php echo $this->formLabel('contribution-public', __('Publish my contribution on the web.')); ?>
                 </div>
                 <div class="inputs">
+                <p class="explanation">By submitting an item, you agree that it may be published on the Harvey Memories Project. You may also choose to attach an optional Creative Commons license to your item so that others can use and distribute it more easily. Check all the boxes that apply. For more information, see the Terms and Conditions.</p>
+                    <?php $rightsBy = isset($_POST['contribution-rights-by']) ? $_POST['contribution-rights-by'] : 0; ?>
+                    <?php echo $this->formCheckbox('contribution-rights[]', 'BY', null, array('BY', '')); ?>
+                    <?php echo $this->formLabel('contribution-rights', __('Others can use and restribute my item, with a citation and appropriate credit, in any medium or format ... ')); ?><br/>
+                    <?php $rightsNc = isset($_POST['contribution-rights-nc']) ? $_POST['contribution-rights-nc'] : 0; ?>
+                    <?php echo $this->formCheckbox('contribution-rights[]', $rightsNc, null, array('NC', '')); ?>
+                    <?php echo $this->formLabel('contribution-rights', __('only if the item is used for non-commercial purposes.')); ?><br/>
+                    <?php $rightsSa = isset($_POST['contribution-rights-sa']) ? $_POST['contribution-rights-sa'] : 0; ?>
+                    <?php echo $this->formCheckbox('contribution-rights[]', $rightsSa, null, array('SA', '')); ?>
+                    <?php echo $this->formLabel('contribution-rights', __('only if any changes to the item are shared under the same license.')); ?><br/>
+                    <?php $rightsNd = isset($_POST['contribution-rights-nd']) ? $_POST['contribution-rights-nd'] : 0; ?>
+                    <?php echo $this->formCheckbox('contribution-rights[]', $rightsNd, null, array('ND', '')); ?>
+                    <?php echo $this->formLabel('contribution-rights', __('only if the item is distributed exactly as it is, with no changes made.')); ?><br/>
+                </div>
+                <div class="inputs">
                     <?php $anonymous = isset($_POST['contribution-anonymous']) ? $_POST['contribution-anonymous'] : 0; ?>
                     <?php echo $this->formCheckbox('contribution-anonymous', $anonymous, null, array(1, 0)); ?>
                     <?php echo $this->formLabel('contribution-anonymous', __("Keep identity private.")); ?>
