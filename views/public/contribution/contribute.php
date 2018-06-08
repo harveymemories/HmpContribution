@@ -62,24 +62,21 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
             </fieldset>
 
             <fieldset id="contribution-confirm-submit" <?php if (!isset($type)) { echo 'style="display: none;"'; }?>>
-                <?php if(isset($captchaScript)): ?>
-                    <div id="captcha" class="inputs"><?php echo $captchaScript; ?></div>
-                <?php endif; ?>
 <h2>Terms and Conditions</h2>
                 <div class="inputs">
                 <p class="explanation">By submitting an item, you agree that it may be published on the Harvey Memories Project. You may also choose to attach an optional Creative Commons license to your item so that others can use and distribute it more easily. Check all the boxes that apply. For more information, see the full <?php echo __("<a href='" . contribution_contribute_url('terms') . "' target='_blank'>" . __('Terms and Conditions') . ".</a>"); ?></p>
                     <?php $rightsBy = isset($_POST['contribution-rights-by']) ? $_POST['contribution-rights-by'] : 0; ?>
                     <?php echo $this->formCheckbox('contribution-rights[]', 'BY', null, array('BY', '')); ?>
-                    <?php echo $this->formLabel('contribution-rights', __('Others can use and redistribute my item, with a citation and appropriate credit, in any medium or format ... ')); ?><br/>
+                    <?php echo $this->formLabel('contribution-rights', __('Others can use and redistribute my item, with citation, in any medium or format ... ')); ?><br/>
                     <?php $rightsNc = isset($_POST['contribution-rights-nc']) ? $_POST['contribution-rights-nc'] : 0; ?>
                     <?php echo $this->formCheckbox('contribution-rights[]', $rightsNc, null, array('NC', '')); ?>
-                    <?php echo $this->formLabel('contribution-rights', __('only if the item is used for non-commercial purposes.')); ?><br/>
+                    <?php echo $this->formLabel('contribution-rights', __('... only if the item is used for non-commercial purposes.')); ?><br/>
                     <?php $rightsSa = isset($_POST['contribution-rights-sa']) ? $_POST['contribution-rights-sa'] : 0; ?>
                     <?php echo $this->formCheckbox('contribution-rights[]', $rightsSa, null, array('SA', '')); ?>
-                    <?php echo $this->formLabel('contribution-rights', __('only if any changes to the item are shared under the same license.')); ?><br/>
+                    <?php echo $this->formLabel('contribution-rights', __('... only if any changes to the item are shared under the same license.')); ?><br/>
                     <?php $rightsNd = isset($_POST['contribution-rights-nd']) ? $_POST['contribution-rights-nd'] : 0; ?>
                     <?php echo $this->formCheckbox('contribution-rights[]', $rightsNd, null, array('ND', '')); ?>
-                    <?php echo $this->formLabel('contribution-rights', __('only if the item is distributed exactly as it is, with no changes made.')); ?><br/>
+                    <?php echo $this->formLabel('contribution-rights', __('... only if the item is distributed exactly as it is, with no changes made.')); ?><br/>
                 </div>
                 <p><?php echo __("In order to contribute, you must read and agree to the %s",  "<a href='" . contribution_contribute_url('terms') . "' target='_blank'>" . __('Terms and Conditions') . ".</a>"); ?></p>
                 <div class="inputs">
@@ -87,6 +84,9 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
                     <?php echo $this->formCheckbox('terms-agree', $agree, null, array('1', '0')); ?>
                     <?php echo $this->formLabel('terms-agree', __('I agree to the Terms and Conditions.')); ?>
                 </div>
+                <?php if(isset($captchaScript)): ?>
+                    <div id="captcha" class="inputs"><?php echo $captchaScript; ?></div>
+                <?php endif; ?>
                 <?php echo $this->formSubmit('form-submit', __('Contribute'), array('class' => 'submitinput')); ?>
             </fieldset>
             <?php echo $csrf; ?>
