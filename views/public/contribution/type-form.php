@@ -10,9 +10,9 @@
             echo $this->formLabel('contribution_email', __('Email (Required)'));
         }
     ?>
-    <p class="explanation">Providing your email helps us contact you and gives you the option to create an account to view your contributions. We will never share your email publicly.</p>
     </div>
     <div class="inputs five columns omega">
+    <p class="explanation">Providing your email helps us contact you and gives you the option to create an account to view your contributions. We will never share your email publicly.</p>
     <?php
         if(isset($_POST['contribution_email'])) {
             $email = $_POST['contribution_email'];
@@ -64,7 +64,7 @@
 <p><?php echo __('You must choose a contribution type to continue.'); ?></p>
 <?php else: ?>
 <h2><?php echo __('Contribute Your %s', $type->display_name); ?></h2>
-<p>Anything you enter in the form below may appear publicly after your submission.</p>
+<p class="explanation">Anything you enter in the form below may appear publicly after your submission.</p>
 
 <?php
 if ($type->isFileRequired()):
