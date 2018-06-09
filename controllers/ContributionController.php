@@ -402,7 +402,7 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
               implode('-', $licenseTerms),
               implode('-', $rights));
         } else {
-           $rightsStatement = "The creator of this item retains all rights.";
+           $rightsStatement = "The creator of this item retains all rights not granted under the <a href="/contribution/terms">Terms and Conditions</a> for the Harvey Memories Project.";
         }
         $item->addTextForElement($rightsElement, $rightsStatement, $isHtml = true);
     }
