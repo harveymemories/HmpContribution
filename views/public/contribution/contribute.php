@@ -64,6 +64,7 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
             </fieldset>
 
             <fieldset id="contribution-confirm-submit" <?php if (!isset($type)) { echo 'style="display: none;"'; }?>>
+<br/>
 <h2>Terms and Conditions</h2>
                 <div class="inputs">
                 <p class="explanation">By submitting an item, you agree that it may be published on the Harvey Memories Project. You may also choose to attach an optional Creative Commons license to your item so that others can use and distribute it more easily. Check all the boxes that apply. For more information, see the full <?php echo __("<a href='" . contribution_contribute_url('terms') . "' target='_blank'>" . __('Terms and Conditions') . ".</a>"); ?></p>
@@ -89,6 +90,7 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
                 <?php if(isset($captchaScript)): ?>
                     <div id="captcha" class="inputs"><?php echo $captchaScript; ?></div>
                 <?php endif; ?>
+                <br/>
                 <?php echo $this->formSubmit('form-submit', __('Contribute'), array('class' => 'submitinput')); ?>
             </fieldset>
             <?php echo $csrf; ?>
