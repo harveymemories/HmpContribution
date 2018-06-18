@@ -814,7 +814,7 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         $components['add_input'] = null;
         $components['description'] = null;
         if ($elementName == 'Text') {
-            $components['comment'] = "Type or paste your text in the box. If your text won't fit here, you can upload a file at the bottom of this form.";
+            $components['comments'] = "Type or paste your text in the box. If your text won't fit here, you can upload a file at the bottom of this form.";
         }
         return $components;
     }
