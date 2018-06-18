@@ -115,3 +115,7 @@ fire_plugin_hook('contribution_type_form', array('type'=>$type, 'view'=>$this));
 echo js_tag('datepicker');
 ?>
 
+<?php
+// Add explanation for geolocation form
+echo js_tag('geolocation-explainer');
+?>
