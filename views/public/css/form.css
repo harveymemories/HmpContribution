@@ -25,3 +25,13 @@ p#contribution-userprofile-visibility {
 div.contribution-userprofile.exists {
 	display: none;
 }
+
+p#alert {
+    background-color: rgba(229, 127, 82, .3);
+    border: 1px solid #4b6569;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: .9em;
+}
