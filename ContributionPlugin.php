@@ -788,6 +788,8 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         $contributionElement = $this->_db->getTable('ContributionTypeElement')->findByElementAndType($element, $type);
         if ($contributionElement->long_text == 0) {
             $components['input'] = $view->formText($args['input_name_stem'] . '[text]', $args['value']);
+        } else {
+            $components['input'] = $view->formTextarea($args['input_name_stem'] . '[text]', $args['value'], array('rows' => '10'));
         }
         if ($elementName == 'Date') {
             $components['input'] = $view->formText($args['input_name_stem'] . '[text]', $args['value'], array('class' => 'datepicker'));
