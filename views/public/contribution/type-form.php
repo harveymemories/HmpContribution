@@ -65,7 +65,9 @@
 <?php else: ?>
 <h2><?php echo __('Contribute Your %s', $type->display_name); ?></h2>
 
-<p id="alert">Anything you enter in the form below may appear publicly after your submission. All parts are optional.</p>
+<div class="inputs">
+     <p id="alert">Anything you enter in the form below may appear publicly after your submission. All parts are optional.</p>
+</div>
 
 <?php
 if ($type->isFileRequired()):
