@@ -35,3 +35,7 @@ p#alert {
     margin-bottom: 20px;
     padding: .9em;
 }
+
+input#geolocation_address {
+        width: 85%;
+}
