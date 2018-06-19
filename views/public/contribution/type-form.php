@@ -65,10 +65,8 @@
 <?php else: ?>
 <h2><?php echo __('Contribute Your %s', $type->display_name); ?></h2>
 
-<div id="flash">
-    <ul style="background-color:rgba(235,110,31,.3)">
-       <li class="success">Anything you enter in the form below may appear publicly after your submission. All parts are optional.</li>
-    </ul>
+<div id="flash" style="background-color:rgba(235,110,31,.3)">
+       <p class="explanation">Anything you enter in the form below may appear publicly after your submission. All parts are optional.</p>
 </div>
 
 <?php
