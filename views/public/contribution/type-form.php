@@ -67,7 +67,7 @@
 
 <div id="flash">
     <ul>
-       <li class="success">>Anything you enter in the form below may appear publicly after your submission. All parts are optional.</li>
+       <li class="success">Anything you enter in the form below may appear publicly after your submission. All parts are optional.</li>
     </ul>
 </div>
 
