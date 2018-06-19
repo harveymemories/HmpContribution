@@ -64,7 +64,12 @@
 <p><?php echo __('You must choose a contribution type to continue.'); ?></p>
 <?php else: ?>
 <h2><?php echo __('Contribute Your %s', $type->display_name); ?></h2>
-<p class="explanation">Anything you enter in the form below may appear publicly after your submission.</p>
+
+<div id="flash">
+    <ul>
+       <li class="success">>Anything you enter in the form below may appear publicly after your submission. All parts are optional.</li>
+    </ul>
+</div>
 
 <?php
 if ($type->isFileRequired()):
