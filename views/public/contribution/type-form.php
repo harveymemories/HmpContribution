@@ -99,7 +99,7 @@ if (!isset($required) && $type->isFileAllowed()):
             <?php echo $this->formLabel('contributed_file', __('Upload a file (Optional)')); ?>
         </div>
         <div class="inputs five columns omega">
-        <p class="explanation">You may wish to upload relevant images or documents to attach to your item. (Note: You can upload multiple files from a single directory by holding the CTRL key (Windows) or COMMAND key (Mac) down while clicking on the files.)</p>
+            <p class="explanation">You may wish to upload relevant images or documents to attach to your item. (Note: You can upload multiple files from a single directory by holding the CTRL key (Windows) or COMMAND key (Mac) down while clicking on the files.)</p>
             <?php echo $this->formFile('contributed_file[]', array('class' => 'fileinput', 'multiple' => 'multiple')); ?>
         </div>
 </div>
