@@ -373,8 +373,21 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
                 continue;
             }
             foreach($elementTexts as $elementText) {
+                if ($element->name == 'Temporal Coverage') {
+                    if (!empty($elementText['start'])) {
+                        $datePeriod = 'start=' . $elementText['start'] . '; ';
+                    }
+                    if (!empty($elementText['end'])) {
+                        $datePeriod .= 'end=' . $elementText['end'] . '; ';
+                    }
+                    if ($datePeriod) {
+                        $datePeriod .= 'scheme=ISO 8601;';
+                        $item->addTextForElement($element, $datePeriod);
+                    }
+                } else {
                 if (!empty($elementText['text'])) {
                     $item->addTextForElement($element, $elementText['text']);
+                }
                 }
             }
         }
