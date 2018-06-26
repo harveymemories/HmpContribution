@@ -25,7 +25,7 @@ if(get_option('contribution_user_profile_type') && plugin_is_active('UserProfile
 }
 
 $head = array('title' => 'Contribute',
-              'bodyclass' => 'contribution');
+              'bodyclass' => 'contribution page');
 echo head($head); ?>
 <script type="text/javascript">
 // <![CDATA[

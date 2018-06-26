@@ -1,5 +1,5 @@
 <?php 
-$head = array('title' => __('Contribution Terms of Service'));
+$head = array('title' => __('Contribution Terms of Service'), 'bodyclass' => 'page');
 echo head($head);
 ?>
 

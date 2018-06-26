@@ -1,4 +1,6 @@
-<?php echo head(); ?>
+<?php echo head(array(
+    'title' => 'Thank You',
+    'bodyclass' => 'page')); ?>
 <div id="primary">
 	<h1><?php echo __("Thank you for contributing!"); ?></h1>
 	<p><?php echo __("Your contribution will show up in the archive once an administrator approves it. Meanwhile, feel free to %s or %s ." , contribution_link_to_contribute(__('make another contribution')), "<a href='" . url('items/browse') . "'>" . __('browse the archive') . "</a>"); ?>
