@@ -278,7 +278,8 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
                 return false;
             }
             $this->_addElementTextsToItem($item, $post['Elements']);
-            $this->_addRightsStatementToItem($item, $post['contribution-rights']);
+            $this->_addRightsToItem($item, $post['contribution-rights']);
+            $this->_addSourceToItem($item);
             // Allow plugins to deal with the inputs they may have added to the form.
             fire_plugin_hook('contribution_save_form', array('contributionType'=>$contributionType,'record'=>$item, 'post'=>$post));
             $item->save();
@@ -393,7 +394,7 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
         }
     }
 
-    protected function _addRightsStatementToItem($item, $rights)
+    protected function _addRightsToItem($item, $rights)
     {
         $db = get_db();
         $elementTable = $db->getTable('Element');
@@ -419,6 +420,16 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
         }
         $item->addTextForElement($rightsElement, $rightsStatement, $isHtml = true);
     }
+
+    protected function _addSourceToItem($item)
+    {
+        $db = get_db();
+        $elementTable = $db->getTable('Element');
+        $sourceElement = $elementTable->findByElementSetNameAndElementName('Dublin Core', 'Source');
+        $sourceStatement = 'This item was contributed via the Harvey Memories Project "Contribute an Item" form.';
+        $item->addTextForElement($sourceElement, $sourceStatement);
+    }
+
 
     /**
      * Validate the contribution form submission.
