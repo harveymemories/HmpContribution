@@ -429,7 +429,7 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
         $sourceElement = $elementTable->findByElementSetNameAndElementName('Dublin Core', 'Source');
         $sourceStatement = 'This item was contributed via the Harvey Memories Project "Contribute an Item" form.';
         $item->addTextForElement($sourceElement, $sourceStatement);
-        $item->addTextForElement($submittedElement, date('Y-m-d');
+        $item->addTextForElement($submittedElement, date('Y-m-d'));
     }
 
 
