@@ -279,7 +279,7 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
             }
             $this->_addElementTextsToItem($item, $post['Elements']);
             $this->_addRightsToItem($item, $post['contribution-rights']);
-            $this->_addSourceToItem($item);
+            $this->_addSubmissionDataToItem($item);
             // Allow plugins to deal with the inputs they may have added to the form.
             fire_plugin_hook('contribution_save_form', array('contributionType'=>$contributionType,'record'=>$item, 'post'=>$post));
             $item->save();
@@ -421,13 +421,15 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
         $item->addTextForElement($rightsElement, $rightsStatement, $isHtml = true);
     }
 
-    protected function _addSourceToItem($item)
+    protected function _addSubmissionDataToItem($item)
     {
         $db = get_db();
         $elementTable = $db->getTable('Element');
+        $submittedElement = $elementTable->findByElementSetNameAndElementName('Dublin Core', 'Date Submitted');
         $sourceElement = $elementTable->findByElementSetNameAndElementName('Dublin Core', 'Source');
         $sourceStatement = 'This item was contributed via the Harvey Memories Project "Contribute an Item" form.';
         $item->addTextForElement($sourceElement, $sourceStatement);
+        $item->addTextForElement($submittedElement, date('Y-m-d');
     }
 
 
