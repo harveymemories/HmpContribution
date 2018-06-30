@@ -487,6 +487,8 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
             $passwordRecoveryUrl = WEB_ROOT . "/users/forgot-password";
             $passwordRecoveryLink = "<a href='$passwordRecoveryUrl'>$passwordRecoveryUrl</a>";
             $body .= "<p>" . __("To log in and change your username, request a password here: ") . $passwordRecoveryLink . "<p>";
+            $body .= "<p>" . __("Here is a summary of your contribution: ") . "</p>";
+            $body .= all_element_texts($item);
             $contributorMail->setBodyHtml($body);
             $contributorMail->setFrom($fromAddress, __("%s Administrator", $siteTitle ));
             $contributorMail->addTo($recipient->email);
@@ -515,6 +517,8 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
             $url = record_url($item, 'show', true);
             $link = "<a href='$url'>$url</a>";
             $body .= "<p>" . __("Contribution URL for review: ") . $link .  "</p>";
+            $body .= "<p>" . __("Here is a summary of the contribution: ") . "</p>";
+            $body .= all_element_texts($item);
 
             revert_theme_base_url();
             $adminMail->setBodyHtml($body);
