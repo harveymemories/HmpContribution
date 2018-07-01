@@ -798,7 +798,7 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         } else {
             $components['input'] = $view->formTextarea($args['input_name_stem'] . '[text]', $args['value'], array('rows' => '10'));
         }
-        if ($elementName == 'Date') {
+        if (stristr($elementName, 'date') !== FALSE) {
             $components['input'] = $view->formText($args['input_name_stem'] . '[text]', $args['value'], array('class' => 'datepicker'));
         }
         if ($elementName == 'Temporal Coverage') {
