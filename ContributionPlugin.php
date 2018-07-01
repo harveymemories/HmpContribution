@@ -831,7 +831,11 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         $components['add_input'] = null;
         // Override Element Type description and comment with form instructions 
         $components['comment'] = null;
-        $components['description'] = '<p class="explanation">' . $instructions . '</p>';
+        if ($instructions) {
+            $components['description'] = '<p class="explanation">' . $instructions . '</p>';
+        } else {
+            $components['description'] = null;
+        }
         return $components;
     }
 }

@@ -138,8 +138,7 @@ class Contribution_TypesController extends Omeka_Controller_AbstractActionContro
                                 $elementInfo['prompt'] = $elementTable->find($elementInfo['id'])->name;
                             }
                             if(empty($elementInfo['instructions'])) {
-                                continue;
-                                // $elementInfo['instructions'] = $elementTable->find($elementInfo['id'])->description;
+                                $elementInfo['instructions'] = null;
                             }
                             $contributionEl = new ContributionTypeElement();
                             $contributionEl->element_id = $elementInfo['id'];
@@ -161,7 +160,7 @@ class Contribution_TypesController extends Omeka_Controller_AbstractActionContro
                                 $elementInfo['prompt'] = $elementTable->find($contributionEl->element_id)->name;
                             }  
                             if(empty($elementInfo['instructions'])) {
-                                $elementInfo['instructions'] = $elementTable->find($contributionEl->element_id)->description;
+                                $elementInfo['instructions'] = null;
                             }
                             $contributionEl->prompt = $elementInfo['prompt'];
                             $contributionEl->instructions = $elementInfo['instructions'];
