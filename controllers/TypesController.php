@@ -56,18 +56,21 @@ class Contribution_TypesController extends Omeka_Controller_AbstractActionContro
             }
             $elementOrder = $this->_getParam('elementOrder');
             $elementPromptValue = $element->prompt;
+            $elementInstructionsValue = $element->instructions;
         } else {
             $elementTempId = '' . time();
             $elementId = '';
             $elementDescription = '';
             $elementOrder = intval($this->_getParam('elementCount')) + 1;
             $elementPromptValue = '';
+            $elementInstructionsValue = '';
         }
     
         $stem = Omeka_Form_ItemTypes::ELEMENTS_TO_ADD_INPUT_NAME . "[$elementTempId]";
         $elementIdName = $stem .'[id]';
         $elementOrderName = $stem .'[order]';
         $elementPromptName = $stem . '[prompt]';
+        $elementInstructionsName = $stem . '[instructions]';
         $elementLongName = $stem . '[long_text]';
         
         $item_type_id = $this->_getParam('itemTypeId');
@@ -78,6 +81,8 @@ class Contribution_TypesController extends Omeka_Controller_AbstractActionContro
                 'element_order_value' => $elementOrder,
                 'element_prompt_name' => $elementPromptName,
                 'element_prompt_value' => $elementPromptValue,
+                'element_instructions_name' => $elementInstructionsName,
+                'element_instructions_value' => $elementInstructionsValue,
                 'element_long_name' => $elementLongName,
                 'item_type_id' => $item_type_id 
         ));
@@ -132,9 +137,12 @@ class Contribution_TypesController extends Omeka_Controller_AbstractActionContro
                             if(empty($elementInfo['prompt'])) {
                                 $elementInfo['prompt'] = $elementTable->find($elementInfo['id'])->name;
                             }
+                            if(empty($elementInfo['instructions'])) {
+                                $elementInfo['instructions'] = $elementTable->find($elementInfo['id'])->description;
                             $contributionEl = new ContributionTypeElement();
                             $contributionEl->element_id = $elementInfo['id'];
                             $contributionEl->prompt = $elementInfo['prompt'];
+                            $contributionEl->instructions = $elementInfo['instructions'];
                             $contributionEl->order = $elementInfo['order'];
                             $contributionEl->long_text = $elementInfo['long_text'];
                             $contributionEl->type_id = $record->id;
@@ -150,7 +158,10 @@ class Contribution_TypesController extends Omeka_Controller_AbstractActionContro
                             if(empty($elementInfo['prompt'])) {
                                 $elementInfo['prompt'] = $elementTable->find($contributionEl->element_id)->name;
                             }  
+                            if(empty($elementInfo['instructions'])) {
+                                $elementInfo['instructions'] = $elementTable->find($elementInfo['id'])->description;
                             $contributionEl->prompt = $elementInfo['prompt'];
+                            $contributionEl->instructions = $elementInfo['instructions'];
                             $contributionEl->order = $elementInfo['order'];                        
                             $contributionEl->long_text = $elementInfo['long_text'];
                             $contributionEl->save();

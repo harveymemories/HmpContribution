@@ -264,6 +264,13 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
                 DROP INDEX `item_type_id`,
                 ADD INDEX `item_type_id` (`item_type_id`)");
         }
+
+        if (version_compare($oldVersion, '3.2.0.1', '<')) {
+            $sql = "
+                ALTER TABLE `{$this->_db->ContributionTypeElement}` ADD `instructions` TEXT COLLATE utf8_unicode_ci;
+                ";
+            $this->_db->query($sql);
+        }
     }
 
     public function hookUninstallMessage()
@@ -819,11 +826,12 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         $type = $view->type;
         $contributionElement = $this->_db->getTable('ContributionTypeElement')->findByElementAndType($element, $type);
         $prompt = $contributionElement->prompt;
+        $instructions = $contributionElement->instructions;
         $components['label'] = '<label>' . $prompt . '</label>';
         $components['add_input'] = null;
-        $components['description'] = null;
-        if ($elementName == 'Text') {
-            $components['comment'] = '<p class="explanation">Type or paste your text in the box. If your text won\'t fit here, you can upload a file at the bottom of this form.</p>';
+        // Override Element Type description and comment with form instructions 
+        $components['comment'] = null;
+        $components['description'] = '<p class="explanation">' . $instructions . '</p>';
         }
         return $components;
     }

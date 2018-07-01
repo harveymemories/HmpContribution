@@ -18,6 +18,7 @@ class ContributionTypeElement extends Omeka_Record_AbstractRecord
     public $type_id;
     public $element_id;
     public $prompt;
+    public $instructions;
     public $order;
     public $long_text;
     

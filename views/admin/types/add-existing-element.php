@@ -25,5 +25,8 @@
         ?>
         <a href="" class="delete-element"><?php echo __('Remove'); ?></a>
     </div>
-    <div class="drawer-contents"></div>
+    <div class="drawer-contents">
+        <label><?php echo __("Instructions to Contributor"); ?></label>
+        <?php echo $this->formTextarea($element_instructions_name, $element_instructions_value, array('class'=>'instructions', 'rows' => '3')); ?>
+    </div>
 </li>

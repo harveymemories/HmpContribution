@@ -67,7 +67,9 @@
                 </div>
                 
                 <div class="drawer-contents">
-                    <div class="element-description"><?php echo html_escape($contributionElement->Element->description); ?></div>
+                    <div class="element-description"><?php echo html_escape($contributionElement->Element->description); ?></div><br/>
+                    <label for="<?php echo "elements[$contributionElement->id][instructions]"; ?>"><?php echo __('Instructions to Contributor'); ?></label>
+                    <?php echo $this->formTextarea("elements[$contributionElement->id][instructions]", $contributionElement->instructions, array('rows' => '3')); ?>
                 </div>
             </li>
             <?php else: ?>
