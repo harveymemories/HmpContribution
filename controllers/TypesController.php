@@ -159,7 +159,8 @@ class Contribution_TypesController extends Omeka_Controller_AbstractActionContro
                                 $elementInfo['prompt'] = $elementTable->find($contributionEl->element_id)->name;
                             }  
                             if(empty($elementInfo['instructions'])) {
-                                $elementInfo['instructions'] = $elementTable->find($elementInfo['id'])->description;
+                                $elementInfo['instructions'] = $elementTable->find($contributionEl->element_id)->description;
+                            }
                             $contributionEl->prompt = $elementInfo['prompt'];
                             $contributionEl->instructions = $elementInfo['instructions'];
                             $contributionEl->order = $elementInfo['order'];                        
