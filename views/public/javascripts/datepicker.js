@@ -5,6 +5,7 @@
            minDate: "2017-08-17",
            showButtonPanel: true,
            currentText: "Show Today",
+           closeText: "X",
            constrainInput: true
           })
    } );
