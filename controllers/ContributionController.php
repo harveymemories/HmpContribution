@@ -385,6 +385,8 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
                         $datePeriod .= 'scheme=ISO 8601;';
                         $item->addTextForElement($element, $datePeriod);
                     }
+                } else if ($element->name == 'Creator' && empty($elementText['text'])) {
+                    $item->addTextForElement($element, 'Anonymous');
                 } else {
                 if (!empty($elementText['text'])) {
                     $item->addTextForElement($element, $elementText['text']);
