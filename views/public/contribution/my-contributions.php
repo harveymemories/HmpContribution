@@ -2,12 +2,14 @@
 $pageTitle = __('My Contributions');
 echo head(array(
     'title' => $pageTitle,
-    'bodyclass' => 'contributions browse',
+    'bodyclass' => 'contributions browse page',
 )); ?>
 <div id="primary">
 <?php echo flash(); ?>
 <h1><?php echo $pageTitle;?> <?php echo __('(%s total)', $total_results); ?></h1>
 <?php if ($total_results): ?>
+<p class="explanation">Unchecking <strong>Public</strong> will remove the item from public view, but it will still be visible to administrators.</p>
+<p class="explanation">Checking <strong>Anonymous</strong> will not remove identifying information from your item, such as your name if it is listed, but it will unlink the item from your User Account and Username.</p>
 <form method='post'>
     <table>
         <thead>
