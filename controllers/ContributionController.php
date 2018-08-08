@@ -387,6 +387,8 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
                     }
                 } else if ($element->name == 'Creator' && empty($elementText['text'])) {
                     $item->addTextForElement($element, 'Anonymous');
+                } else if ($element->name == 'Title' && empty($elementText['text'])) {
+                    $item->addTextForElement($element, 'Untitled');
                 } else {
                 if (!empty($elementText['text'])) {
                     $item->addTextForElement($element, $elementText['text']);
