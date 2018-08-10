@@ -10,6 +10,4 @@
           })
    } );
 
-<!--For more options see http://api.jqueryui.com/datepicker/-->
-<!--The selector class, datepicker, is added to form in main plugin file-->
 
