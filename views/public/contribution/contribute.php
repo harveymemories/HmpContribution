@@ -40,7 +40,7 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
 
 <p>On this page you can share your own <strong>stories</strong>, <strong>images</strong>, and <strong>audio-visual recordings</strong> from or about Hurricane Harvey. If you have a different kind of item or memory you would like to contribute, or if you would like assistance telling your story, please <a href="/contact">contact us</a> or review our <a href="/faq">Frequently Asked Questions</a>.</p> 
 
-<p>As you share your experience with Hurricane Harvey, you may feel or remember painful emotions. You can stop sharing your story at any time. If you need additional assistance, consider contacting one of the resources listed at the bottom of our <a href="/faq">FAQ page</a>.</p>
+<p>As you share your experience with Hurricane Harvey, you may feel or remember painful emotions. You can stop sharing your story at any time. If you need additional assistance, consider contacting one of the organizations listed on our <a href="/resources">Resources</a> page.</p>
 
     <?php if(! ($user = current_user() )
               && !(get_option('contribution_open') )
