@@ -80,6 +80,7 @@ if ($type->isFileRequired()):
     </div>
     <div class="inputs five columns omega">
         <?php echo $this->formFile('contributed_file', array('class' => 'fileinput')); ?>
+        <p class="explanation">File size limit: <?php echo max_file_size() ?></p>
     </div>
 </div>
 
@@ -101,6 +102,7 @@ if (!isset($required) && $type->isFileAllowed()):
         <div class="inputs five columns omega">
             <p class="explanation">You may wish to upload relevant images or documents to attach to your item. (Note: You can upload multiple files from a single directory by holding the CTRL key (Windows) or COMMAND key (Mac) down while clicking on the files.)</p>
             <?php echo $this->formFile('contributed_file[]', array('class' => 'fileinput', 'multiple' => 'multiple')); ?>
+            <p class="explanation">File size limit: <?php echo max_file_size() ?></p>
         </div>
 </div>
 <?php endif; ?>
